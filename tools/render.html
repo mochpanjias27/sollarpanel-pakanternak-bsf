@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><title>Render mesin</title>
+<style>html,body{margin:0;background:transparent}#v{width:var(--w);height:var(--h)}</style></head>
+<body><div id="v"></div>
+<script type="module">
+// Alat internal: render satu model mesin ke PNG (dipakai skrip tools/render-mesin.py).
+import { buatAdegan } from '../assets/js/three/adegan.js';
+const q = new URLSearchParams(location.search);
+const v = document.getElementById('v');
+v.style.setProperty('--w', (q.get('w') || 800) + 'px');
+v.style.setProperty('--h', (q.get('h') || 600) + 'px');
+const a = buatAdegan(v, { mode: 'tunggal', mesinId: q.get('mesin'), simpanGambar: true, bayangan: true, aktif: true, zoom: 0.82 });
+if (q.get('sudut')) { const s = +q.get('sudut'); const c = a.camera.position.clone().sub(a.controls.target); c.applyAxisAngle({x:0,y:1,z:0, isVector3:true}, s); }
+setTimeout(() => { window.siap = true; }, 900);
+</script></body></html>

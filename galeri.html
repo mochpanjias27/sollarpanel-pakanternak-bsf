@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Galeri — Bening Saguling</title>
+<meta name="description" content="Foto mesin, sistem panel surya, dan kegiatan di fasilitas Bening Saguling Foundation.">
+<meta name="theme-color" content="#10372a">
+<meta property="og:title" content="Galeri — Bening Saguling">
+<meta property="og:description" content="Foto mesin, sistem panel surya, dan kegiatan di fasilitas Bening Saguling Foundation.">
+<meta property="og:image" content="/assets/img/foto/mixer-bahan-granul.webp">
+<meta property="og:locale" content="id_ID">
+<link rel="icon" href="/assets/img/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="/assets/css/style.css">
+<script type="module" src="/assets/js/core/layout.js"></script>
+</head>
+<body data-halaman="galeri">
+<main>
+  <section class="judul-halaman">
+    <div class="wadah">
+      <div class="remah"><a href="/">Beranda</a> / Galeri</div>
+      <span class="plakat">Galeri kegiatan</span>
+      <h1>Dari lapangan</h1>
+      <p class="lead">Foto mesin dan sistem listrik di fasilitas, dilengkapi ilustrasi 3D untuk mesin yang belum difoto.</p>
+      <div class="segmen" role="group" aria-label="Saring galeri" style="margin-top:8px">
+        <button data-saring="semua" aria-pressed="true">Semua</button><button data-saring="foto">Foto lapangan</button><button data-saring="render">Ilustrasi 3D</button>
+      </div>
+    </div>
+  </section>
+  <section class="bagian-kecil" style="padding-top:0">
+    <div class="wadah">
+      <div class="galeri" id="galeri"></div>
+      <p class="catatan">Foto kegiatan (kunjungan, panen maggot, pelatihan) dapat ditambahkan di <code>assets/js/pages/galeri.js</code>.</p>
+    </div>
+  </section>
+  <dialog class="lightbox" id="lightbox"><img alt="" id="lb-img"><p id="lb-teks"></p></dialog>
+</main>
+<script type="module" src="/assets/js/pages/galeri.js"></script>
+</body>
+</html>

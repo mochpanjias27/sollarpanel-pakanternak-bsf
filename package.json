@@ -1,0 +1,12 @@
+{
+  "name": "bening-saguling-web",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Website pengolahan sampah organik Bening Saguling Foundation: pakan maggot, pupuk kompos, energi surya, penjadwal, simulasi 3D.",
+  "type": "module",
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "dev": "node tools/dev-server.mjs",
+    "test": "node tools/uji-penjadwal.mjs"
+  }
+}

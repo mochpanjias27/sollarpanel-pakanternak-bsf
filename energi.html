@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dasbor Energi Surya — Bening Saguling</title>
+<meta name="description" content="Dasbor real-time panel surya on-grid tanpa baterai: daya PV, beban mesin, impor PLN, dan penghematan.">
+<meta name="theme-color" content="#10372a">
+<meta property="og:title" content="Dasbor Energi Surya — Bening Saguling">
+<meta property="og:description" content="Dasbor real-time panel surya on-grid tanpa baterai: daya PV, beban mesin, impor PLN, dan penghematan.">
+<meta property="og:image" content="/assets/img/foto/mixer-bahan-granul.webp">
+<meta property="og:locale" content="id_ID">
+<link rel="icon" href="/assets/img/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="/assets/css/style.css">
+<script type="module" src="/assets/js/core/layout.js"></script>
+</head>
+<body data-halaman="energi">
+<main>
+  <section class="judul-halaman" style="padding-bottom:12px">
+    <div class="wadah">
+      <div class="remah"><a href="/">Beranda</a> / Energi Surya</div>
+      <span class="plakat surya">Dasbor real-time · tanpa baterai</span>
+      <h1>Energi surya hari ini</h1>
+      <div class="baris-tombol" style="align-items:center;gap:14px">
+        <span class="status-hari hijau" id="status-inv">Inverter: memuat…</span>
+        <span class="catatan" style="margin:0">Diperbarui <b id="waktu" class="num">–</b> · sumber <b id="sumber">–</b></span>
+      </div>
+      <p class="catatan" id="galat" style="color:var(--merah)"></p>
+    </div>
+  </section>
+
+  <section class="bagian-kecil" style="padding-top:8px">
+    <div class="wadah">
+      <div class="kisi" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr))">
+        <div class="kartu angka surya"><div class="label"><i></i>Daya PV</div><div class="nilai"><span id="pv">–</span><small>kW</small></div><div class="sub">maks inverter <span id="inv-kw">–</span> kW</div></div>
+        <div class="kartu angka beban"><div class="label"><i></i>Daya beban total</div><div class="nilai"><span id="beban">–</span><small>kW</small></div><div class="sub" id="mesin-aktif">–</div></div>
+        <div class="kartu angka pln"><div class="label"><i></i>Daya impor PLN</div><div class="nilai"><span id="impor">–</span><small>kW</small></div><div class="sub" id="surplus">–</div></div>
+        <div class="kartu angka surya"><div class="label"><i></i>Energi surya hari ini</div><div class="nilai"><span id="e-pv">–</span><small>kWh</small></div><div class="sub"><span id="e-terpakai">–</span> kWh langsung dipakai mesin</div></div>
+        <div class="kartu angka pln"><div class="label"><i></i>Energi PLN hari ini</div><div class="nilai"><span id="e-pln">–</span><small>kWh</small></div><div class="sub">dibeli dari jaringan</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bagian-kecil">
+    <div class="wadah kisi" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr))">
+      <div class="kartu">
+        <h3>Aliran energi saat ini</h3>
+        <div id="aliran"></div>
+        <p class="catatan mb0">Tidak ada baterai: surya hanya berguna bila mesin menyala pada saat yang sama. Kekurangan diambil dari PLN; kelebihan mengalir ke jaringan.</p>
+      </div>
+      <div class="kartu">
+        <h3>Pemanfaatan surya hari ini</h3>
+        <div class="kisi k2" style="gap:12px;margin:8px 0 14px">
+          <div><div id="cincin-1"></div><p class="catatan tengah mb0"><b>Surya yang terpakai</b><br>porsi produksi surya yang langsung dipakai mesin</p></div>
+          <div><div id="cincin-2"></div><p class="catatan tengah mb0"><b>Kebutuhan dari surya</b><br>porsi listrik mesin yang dipenuhi surya</p></div>
+        </div>
+        <div class="kartu gelap" style="padding:16px;box-shadow:none">
+          <div class="label" style="color:#9fc1ab;font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em">Estimasi penghematan hari ini</div>
+          <div style="font:800 2.3rem/1.1 var(--font-judul);color:#fff" class="num" id="hemat">–</div>
+          <div class="catatan" style="color:#9fc1ab">= surya terpakai × tarif PLN <span id="tarif">–</span>/kWh <span class="asumsi">asumsi</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bagian-kecil">
+    <div class="wadah">
+      <div class="kartu">
+        <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;align-items:baseline">
+          <h3 class="mb0">Grafik 24 jam: PV vs beban vs impor PLN</h3>
+          <div class="legenda"><span><i style="background:#f2b705"></i>Daya PV</span><span><i style="background:#f06a1d"></i>Beban</span><span><i style="background:#2f63d6"></i>Impor PLN</span></div>
+        </div>
+        <div id="grafik" style="margin-top:12px" class="kotak-memuat gemar">Memuat…</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bagian-kecil">
+    <div class="wadah kisi k2">
+      <div class="kartu info-sistem">
+        <h3>Sistem terpasang</h3>
+        <table>
+          <tbody id="tabel-sistem"></tbody>
+        </table>
+      </div>
+      <div class="kartu">
+        <h3>Sumber data (bertahap)</h3>
+        <ol style="padding-left:1.2em">
+          <li><b>Tahap 1 (sekarang):</b> data simulasi realistis: kurva surya berbentuk lonceng dengan gangguan awan, beban mengikuti jadwal mesin.</li>
+          <li><b>Tahap 2:</b> Solis Cloud API dari data logger inverter, atau gateway Modbus RS485 yang membaca meter Acrel DTSD1352-C.</li>
+        </ol>
+        <p class="catatan mb0">Penggantian sumber cukup lewat pengaturan di Vercel (<code>ENERGY_SOURCE</code>) tanpa mengubah halaman.</p>
+      </div>
+    </div>
+  </section>
+</main>
+<script type="module" src="/assets/js/pages/energi.js"></script>
+</body>
+</html>

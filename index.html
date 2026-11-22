@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bening Saguling — Dari Sampah Dapur Jadi Pakan dan Pupuk</title>
+<meta name="description" content="Fasilitas pengolahan sampah organik rumah tangga di Cihampelas, Bandung Barat: pelet pakan maggot, pupuk kompos granul, bertenaga panel surya.">
+<meta name="theme-color" content="#10372a">
+<meta property="og:title" content="Bening Saguling — Dari Sampah Dapur Jadi Pakan dan Pupuk">
+<meta property="og:description" content="Fasilitas pengolahan sampah organik rumah tangga di Cihampelas, Bandung Barat: pelet pakan maggot, pupuk kompos granul, bertenaga panel surya.">
+<meta property="og:image" content="/assets/img/foto/mixer-bahan-granul.webp">
+<meta property="og:locale" content="id_ID">
+<link rel="icon" href="/assets/img/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="/assets/css/style.css">
+<script type="module" src="/assets/js/core/layout.js"></script>
+</head>
+<body data-halaman="beranda">
+<main>
+  <section class="hero">
+    <div class="wadah kisi-hero">
+      <div>
+        <span class="plakat">Bening Saguling Foundation · Cihampelas, KBB</span>
+        <h1>Dari Sampah Dapur Jadi <em>Pakan</em> dan <span class="biru">Pupuk</span></h1>
+        <p class="lead">Sisa makanan dan sayuran rumah tangga kami olah menjadi pelet pakan ayam dan ikan berbahan maggot, serta pupuk kompos granul. Listriknya dari panel surya, dan mesin dijadwalkan menyala saat matahari terik.</p>
+        <div class="baris-tombol">
+          <a class="tombol" href="/pakan">Pakan Ternak</a>
+          <a class="tombol oranye" href="/pupuk">Pupuk Kompos</a>
+          <a class="tombol surya" href="/energi">Energi Surya</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="strip-mesin" aria-hidden="true"><span style="background:var(--oranye)"></span><span style="background:var(--biru)"></span><span style="background:var(--label)"></span></div>
+        <img class="foto-utama" src="/assets/img/foto/mixer-bahan-granul.webp" alt="Mixer bahan granul berwarna oranye dengan screw conveyor di fasilitas Bening Saguling" width="1400" height="1050" fetchpriority="high">
+        <div class="kartu-langsung" aria-live="polite">
+          <div class="atas"><span><span class="titik-langsung"></span>&nbsp; Surya saat ini</span><span id="h-waktu">--.--</span></div>
+          <div class="nilai num"><span id="h-pv">–</span><small>kW</small></div>
+          <div class="bar"><span id="h-bar" style="width:0"></span></div>
+          <div class="baris"><span>Hari ini</span><b class="num"><span id="h-energi">–</span> kWh</b></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bagian-kecil">
+    <div class="wadah">
+      <div class="kisi k4">
+        <div class="kartu angka surya"><div class="label"><i></i>Daya surya saat ini</div><div class="nilai"><span id="k-pv">–</span><small>kW</small></div><div class="sub">dari kapasitas <span id="k-kwp">–</span> kWp</div></div>
+        <div class="kartu angka surya"><div class="label"><i></i>Energi surya hari ini</div><div class="nilai"><span id="k-energi">–</span><small>kWh</small></div><div class="sub">sejak matahari terbit</div></div>
+        <div class="kartu angka beban"><div class="label"><i></i>Mesin bekerja</div><div class="nilai"><span id="k-mesin">–</span><small>unit</small></div><div class="sub" id="k-mesin-nama">memuat…</div></div>
+        <div class="kartu angka"><div class="label"><i></i>Hemat listrik hari ini</div><div class="nilai" style="font-size:clamp(1.7rem,7vw,2.4rem)"><span id="k-hemat">–</span></div><div class="sub">energi surya yang langsung dipakai</div></div>
+      </div>
+      <p class="catatan" style="margin-top:12px">Data diperbarui otomatis tiap 30 detik. <b>MODE DEMO:</b> angka energi masih simulasi sampai inverter Solis tersambung.</p>
+    </div>
+  </section>
+
+  <section class="bagian">
+    <div class="wadah">
+      <span class="plakat oranye">Dua jalur olah</span>
+      <h2>Satu ember sampah, dua produk bernilai</h2>
+      <p class="lead">Sampah organik dipilah sejak dari rumah, lalu masuk ke dua jalur: diberikan ke maggot untuk pakan, atau dikomposkan untuk pupuk.</p>
+      <div class="kisi k2" style="margin-top:28px">
+        <a class="kartu" href="/pakan" style="text-decoration:none;color:inherit;border-top:6px solid var(--label)">
+          <h3>Jalur Pakan Ternak</h3>
+          <p class="catatan">Sampah organik → maggot segar → pencuci → pengering → penepung → mixer → peletizer</p>
+          <img src="/assets/img/foto/peletizer-pakan-sm.webp" alt="Peletizer pakan flat die" loading="lazy" style="border-radius:12px;aspect-ratio:16/10;object-fit:cover;width:100%;margin:10px 0">
+          <b style="color:var(--daun)">Pelet ayam &amp; pelet ikan →</b>
+        </a>
+        <a class="kartu" href="/pupuk" style="text-decoration:none;color:inherit;border-top:6px solid var(--oranye)">
+          <h3>Jalur Pupuk Kompos</h3>
+          <p class="catatan">Sampah organik → pencacah → komposter → ayak → penepung → mixer → granulator</p>
+          <img src="/assets/img/foto/mesin-ayak-kompos-sm.webp" alt="Mesin ayak kompos" loading="lazy" style="border-radius:12px;aspect-ratio:16/10;object-fit:cover;width:100%;margin:10px 0">
+          <b style="color:var(--oranye)">Kompos halus &amp; pupuk granul →</b>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="bagian" style="background:var(--kertas);border-block:1px solid var(--garis)">
+    <div class="wadah">
+      <span class="plakat">Dampak program</span>
+      <h2>Yang sudah berjalan</h2>
+      <div class="kisi k4 dampak" style="margin-top:24px" id="dampak"></div>
+      <p class="catatan" style="margin-top:16px">Angka per bulan. <span class="asumsi">asumsi</span> Angka ilustrasi, ganti dengan data pencatatan fasilitas.</p>
+    </div>
+  </section>
+
+  <section class="bagian">
+    <div class="wadah kisi-dua">
+      <div>
+        <span class="plakat surya">Surya tanpa baterai</span>
+        <h2>Mesin berat menyala saat matahari paling terik</h2>
+        <p class="lead">Sistem kami on-grid tanpa baterai, jadi listrik surya yang tidak dipakai saat itu juga akan hilang. Penjadwal cerdas membaca prakiraan cuaca 3–7 hari dan menaruh peletizer, pencacah, dan penepung di jam surya tertinggi.</p>
+        <div class="baris-tombol"><a class="tombol surya" href="/jadwal">Lihat jadwal produksi</a><a class="tombol garis" href="/energi">Dasbor energi</a></div>
+      </div>
+      <div class="kartu">
+        <div class="legenda" style="margin-bottom:8px"><span><i style="background:var(--surya)"></i>Estimasi surya</span><span><i style="background:var(--oranye)"></i>Beban mesin</span></div>
+        <div id="mini-grafik" class="kotak-memuat gemar">Memuat grafik…</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bagian" style="padding-top:0">
+    <div class="wadah">
+      <div class="pita kisi-dua">
+        <div>
+          <span class="plakat biru">Baru · Simulasi 3D</span>
+          <h2>Jelajahi semua mesin dalam 3D</h2>
+          <p>Putar, perbesar, dan nyalakan tiap mesin. Lihat aliran energi dari panel surya dan PLN, atau putar ulang jadwal satu hari penuh.</p>
+          <a class="tombol oranye" href="/simulasi-3d">Buka simulasi 3D</a>
+        </div>
+        <div class="kisi k3" style="gap:10px;position:relative;z-index:1">
+          <img src="/assets/img/render/peletizer-sm.webp" alt="Model 3D peletizer" loading="lazy" style="background:#fff1;border-radius:14px;padding:6px">
+          <img src="/assets/img/render/pan-granulator-sm.webp" alt="Model 3D pan granulator" loading="lazy" style="background:#fff1;border-radius:14px;padding:6px">
+          <img src="/assets/img/render/pengering-maggot-sm.webp" alt="Model 3D pengering maggot" loading="lazy" style="background:#fff1;border-radius:14px;padding:6px">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bagian" style="padding-top:0">
+    <div class="wadah kisi-dua">
+      <div>
+        <span class="plakat">Kunjungan &amp; pemesanan</span>
+        <h2>Mampir dan belajar langsung</h2>
+        <p class="lead">Sekolah, kelompok tani, peternak, dan warga terbuka untuk berkunjung. Kami juga melayani pemesanan pelet dan pupuk.</p>
+        <div class="baris-tombol"><a class="tombol" href="/kontak#kunjungan">Ajukan kunjungan</a><a class="tombol oranye" href="/kontak#pesan">Pesan produk</a></div>
+      </div>
+      <img src="/assets/img/foto/mixer-bahan-pakan.webp" alt="Mixer bahan pakan biru" loading="lazy" style="border-radius:24px;box-shadow:var(--bayang)">
+    </div>
+  </section>
+</main>
+<script type="module" src="/assets/js/pages/beranda.js"></script>
+</body>
+</html>

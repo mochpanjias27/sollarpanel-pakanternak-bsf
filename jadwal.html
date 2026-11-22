@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Jadwal Produksi Cerdas — Bening Saguling</title>
+<meta name="description" content="Penjadwal mesin berdasarkan prakiraan radiasi matahari 3–7 hari untuk memaksimalkan pemakaian energi surya.">
+<meta name="theme-color" content="#10372a">
+<meta property="og:title" content="Jadwal Produksi Cerdas — Bening Saguling">
+<meta property="og:description" content="Penjadwal mesin berdasarkan prakiraan radiasi matahari 3–7 hari untuk memaksimalkan pemakaian energi surya.">
+<meta property="og:image" content="/assets/img/foto/mixer-bahan-granul.webp">
+<meta property="og:locale" content="id_ID">
+<link rel="icon" href="/assets/img/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="/assets/css/style.css">
+<script type="module" src="/assets/js/core/layout.js"></script>
+</head>
+<body data-halaman="jadwal">
+<main>
+  <section class="judul-halaman" style="padding-bottom:16px">
+    <div class="wadah">
+      <div class="remah"><a href="/">Beranda</a> / Jadwal Produksi</div>
+      <span class="plakat surya">Penjadwal cerdas</span>
+      <h1>Jadwal produksi mengikuti matahari</h1>
+      <p class="lead">Penjadwal membaca prakiraan radiasi per jam, menghitung estimasi daya surya, lalu menaruh mesin terberat di jam surya tertinggi, dengan urutan proses tetap terjaga.</p>
+      <div class="alat-jadwal" style="margin-top:18px">
+        <div class="segmen" role="group" aria-label="Rentang hari">
+          <button data-hari="3">3 hari</button><button data-hari="5">5 hari</button><button data-hari="7" aria-pressed="true">7 hari</button>
+        </div>
+        <button class="tombol kecil" id="btn-simpan">💾 Simpan jadwal</button>
+        <button class="tombol kecil wa" id="btn-wa">Ekspor WhatsApp</button>
+        <button class="tombol kecil garis" id="btn-pdf">Ekspor PDF</button>
+      </div>
+      <p class="catatan" id="info-sumber" style="margin-top:12px">Memuat prakiraan…</p>
+    </div>
+  </section>
+
+  <section class="bagian-kecil" style="padding-top:0">
+    <div class="wadah">
+      <div class="kisi k4" id="ringkasan"></div>
+    </div>
+  </section>
+
+  <section class="bagian-kecil" id="blok-peringatan">
+    <div class="wadah"><div id="peringatan" style="display:grid;gap:10px"></div></div>
+  </section>
+
+  <section class="bagian-kecil">
+    <div class="wadah">
+      <div class="kartu">
+        <h2 style="font-size:1.6rem">Rekomendasi</h2>
+        <div id="rekomendasi" class="kotak-memuat gemar">Menyusun…</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bagian-kecil">
+    <div class="wadah">
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;align-items:end;margin-bottom:14px">
+        <h2 class="mb0" style="font-size:1.6rem">Garis waktu per hari</h2>
+        <div class="legenda-warna">
+          <span style="--w:#22a35a">Surya penuh</span><span style="--w:#f2b705">Campuran</span><span style="--w:#d24a33">Dominan PLN</span><span style="--w:#f9d872;opacity:.8">Estimasi PV</span>
+        </div>
+      </div>
+      <div id="hari" style="display:grid;gap:14px"></div>
+    </div>
+  </section>
+
+  <section class="bagian-kecil">
+    <div class="wadah">
+      <h2 style="font-size:1.6rem">Daftar mesin &amp; pekerjaan</h2>
+      <div class="tabel-wadah"><table>
+        <thead><tr><th>Alur (prioritas)</th><th>Mesin</th><th>Daya</th><th>Durasi</th><th>Frekuensi</th></tr></thead>
+        <tbody id="tabel-mesin"></tbody>
+      </table></div>
+      <p class="catatan" style="margin-top:10px">Ubah daya, durasi, prioritas, dan pola kebiasaan di <code>assets/js/config.js</code>. Nilai bertanda * adalah <span class="asumsi">asumsi</span>.</p>
+    </div>
+  </section>
+
+  <section class="bagian-kecil tanpa-cetak">
+    <div class="wadah">
+      <details>
+        <summary>Bagaimana jadwal ini disusun?</summary>
+        <ol>
+          <li><b>Estimasi PV per 30 menit</b> = kWp × radiasi prakiraan (W/m²) ÷ 1000 × faktor efisiensi 0,75, dibatasi daya inverter.</li>
+          <li><b>Pekerjaan berupa alur</b> (mis. pencuci → pengering → penepung → mixer → peletizer). Langkah wajib berurutan di hari yang sama, dengan jeda maksimal 1,5 jam.</li>
+          <li><b>Alur dengan energi terbesar ditempatkan lebih dulu</b>, sehingga mesin terberat mendapat jam surya tertinggi (umumnya 10.00–14.00).</li>
+          <li><b>Biaya</b> tiap posisi = tambahan impor PLN + penalti bila beban melewati 80% estimasi PV (cadangan 20% untuk awan lewat).</li>
+          <li><b>Batasan:</b> satu mesin tidak bisa dipakai dua pekerjaan sekaligus; dua motor tidak dinyalakan di slot yang sama (lonjakan arus start); total beban di bawah batas daya PLN; hari batch hanya digeser ±2 hari dari kebiasaan dan jarak antar-batch dijaga; pencacahan tetap harian.</li>
+          <li><b>Pembanding:</b> jadwal kebiasaan (mulai 07.30/08.00 di hari tetap) dihitung dengan prakiraan yang sama untuk mengukur penghematan.</li>
+        </ol>
+        <p class="catatan">Prakiraan berubah cepat di musim hujan Jawa Barat. Susun ulang setiap pagi atau setiap prakiraan berubah.</p>
+      </details>
+    </div>
+  </section>
+</main>
+<script type="module" src="/assets/js/pages/jadwal.js"></script>
+</body>
+</html>

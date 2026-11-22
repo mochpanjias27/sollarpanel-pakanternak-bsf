@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kontak, Kunjungan, dan Pemesanan — Bening Saguling</title>
+<meta name="description" content="Alamat, peta, WhatsApp, formulir kunjungan, dan pemesanan pelet serta pupuk.">
+<meta name="theme-color" content="#10372a">
+<meta property="og:title" content="Kontak, Kunjungan, dan Pemesanan — Bening Saguling">
+<meta property="og:description" content="Alamat, peta, WhatsApp, formulir kunjungan, dan pemesanan pelet serta pupuk.">
+<meta property="og:image" content="/assets/img/foto/mixer-bahan-granul.webp">
+<meta property="og:locale" content="id_ID">
+<link rel="icon" href="/assets/img/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="/assets/css/style.css">
+<script type="module" src="/assets/js/core/layout.js"></script>
+</head>
+<body data-halaman="kontak">
+<main>
+  <section class="judul-halaman">
+    <div class="wadah">
+      <div class="remah"><a href="/">Beranda</a> / Kontak</div>
+      <span class="plakat">Hubungi kami</span>
+      <h1>Berkunjung atau memesan</h1>
+    </div>
+  </section>
+
+  <section class="bagian-kecil" style="padding-top:0">
+    <div class="wadah kisi-dua" style="align-items:start">
+      <div>
+        <div class="kartu" style="margin-bottom:16px">
+          <h3>Alamat</h3>
+          <p id="alamat"></p>
+          <div class="baris-tombol">
+            <a class="tombol wa" id="wa-utama" target="_blank" rel="noopener">WhatsApp</a>
+            <a class="tombol garis" id="arah" target="_blank" rel="noopener">Petunjuk arah</a>
+          </div>
+          <p class="catatan" style="margin-top:12px;margin-bottom:0">Nomor WhatsApp dan koordinat peta masih <span class="asumsi">asumsi</span>, ganti di file konfigurasi.</p>
+        </div>
+        <iframe class="peta" id="peta" title="Peta lokasi fasilitas" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+
+      <div class="kartu">
+        <div class="segmen" role="tablist" style="width:100%;margin-bottom:16px">
+          <button role="tab" data-tab="kunjungan" aria-pressed="true" style="flex:1">Kunjungan</button>
+          <button role="tab" data-tab="pesan" aria-pressed="false" style="flex:1">Pemesanan</button>
+        </div>
+
+        <form class="form" id="form-kunjungan" data-form="kunjungan">
+          <h3 id="kunjungan" class="mb0">Formulir kunjungan</h3>
+          <div class="dua">
+            <label>Nama<input name="nama" required autocomplete="name"></label>
+            <label>Instansi / kelompok<input name="instansi" placeholder="mis. SDN Cianjur"></label>
+          </div>
+          <div class="dua">
+            <label>Tanggal rencana<input type="date" name="tanggal" required></label>
+            <label>Jumlah orang<input type="number" name="jumlah" min="1" value="10" required></label>
+          </div>
+          <label>Minat<select name="minat"><option>Keseluruhan fasilitas</option><option>Budidaya maggot &amp; pakan</option><option>Kompos &amp; pupuk granul</option><option>Panel surya &amp; jadwal energi</option></select></label>
+          <label>Catatan<textarea name="catatan" rows="3" placeholder="Usia peserta, kebutuhan khusus, dll."></textarea></label>
+          <button class="tombol wa" type="submit">Kirim lewat WhatsApp</button>
+        </form>
+
+        <form class="form sembunyi" id="form-pesan" data-form="pesan">
+          <h3 id="pesan" class="mb0">Formulir pemesanan</h3>
+          <div class="dua">
+            <label>Nama<input name="nama" required autocomplete="name"></label>
+            <label>No. HP<input name="hp" type="tel" inputmode="tel" autocomplete="tel"></label>
+          </div>
+          <div class="dua">
+            <label>Produk<select name="produk"><option>Pelet ayam starter</option><option>Pelet ayam grower</option><option>Pelet ayam layer</option><option>Pelet ikan benih</option><option>Pelet ikan pembesaran</option><option>Kompos halus</option><option>Pupuk kompos granul</option><option>Maggot segar</option></select></label>
+            <label>Jumlah (kg)<input type="number" name="jumlah" min="1" value="10" required></label>
+          </div>
+          <label>Pengambilan<select name="kirim"><option>Ambil di lokasi</option><option>Minta diantar (ongkos menyesuaikan)</option></select></label>
+          <label>Alamat / catatan<textarea name="catatan" rows="3"></textarea></label>
+          <button class="tombol wa" type="submit">Kirim pesanan lewat WhatsApp</button>
+        </form>
+        <p class="catatan" style="margin-top:12px;margin-bottom:0">Formulir membuka WhatsApp dengan pesan yang sudah terisi. Tidak ada data yang disimpan di situs ini.</p>
+      </div>
+    </div>
+  </section>
+</main>
+<script type="module" src="/assets/js/pages/kontak.js"></script>
+</body>
+</html>

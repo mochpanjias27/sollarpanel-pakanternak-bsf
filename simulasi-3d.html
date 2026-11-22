@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Simulasi 3D Mesin — Bening Saguling</title>
+<meta name="description" content="Jelajahi semua mesin pengolahan sampah organik dalam 3D: nyalakan mesin, lihat aliran energi, dan putar ulang jadwal.">
+<meta name="theme-color" content="#10372a">
+<meta property="og:title" content="Simulasi 3D Mesin — Bening Saguling">
+<meta property="og:description" content="Jelajahi semua mesin pengolahan sampah organik dalam 3D: nyalakan mesin, lihat aliran energi, dan putar ulang jadwal.">
+<meta property="og:image" content="/assets/img/foto/mixer-bahan-granul.webp">
+<meta property="og:locale" content="id_ID">
+<link rel="icon" href="/assets/img/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="/assets/css/style.css">
+<script type="module" src="/assets/js/core/layout.js"></script>
+</head>
+<body data-halaman="simulasi-3d" class="badan-3d tanpa-kaki">
+<main class="ruang-3d">
+  <h1 class="sembunyi">Simulasi 3D mesin pengolahan sampah organik</h1>
+  <div class="kanvas" id="kanvas"><div class="kotak-memuat gemar" id="memuat" style="position:absolute;inset:0">Menyiapkan model 3D…</div></div>
+
+  <div class="hud" aria-live="polite">
+    <div class="chip" id="hud-jam-wrap"><span id="hud-mode">Manual · sekarang</span><b id="hud-jam">--.--</b></div>
+    <div class="chip surya"><span>Surya</span><b><span id="hud-pv">–</span> kW</b></div>
+    <div class="chip beban"><span>Beban</span><b><span id="hud-beban">–</span> kW</b></div>
+    <div class="chip pln"><span>Impor PLN</span><b><span id="hud-impor">–</span> kW</b></div>
+    <div class="chip"><span>Dari surya</span><b id="hud-rasio">–</b></div>
+  </div>
+
+  <aside class="panel-3d ciut" id="panel">
+    <button class="pegangan" id="pegangan" aria-expanded="false"><span>Kendali simulasi</span><span id="pegangan-ikon">▲</span></button>
+    <div class="isi-panel">
+      <div class="segmen" role="group" aria-label="Mode simulasi" style="width:100%;margin-bottom:12px">
+        <button data-mode="manual" aria-pressed="true" style="flex:1">Manual</button>
+        <button data-mode="jadwal" aria-pressed="false" style="flex:1">Ikuti jadwal</button>
+      </div>
+
+      <div id="kendali-jadwal" class="sembunyi" style="margin-bottom:12px">
+        <label class="catatan" for="pilih-hari" style="font-weight:700">Hari</label>
+        <select id="pilih-hari" style="width:100%;padding:10px;border-radius:10px;border:1.5px solid var(--garis);font:600 .95rem var(--font);margin:4px 0 10px"></select>
+        <div style="display:flex;gap:8px;align-items:center">
+          <button class="tombol kecil" id="btn-putar" aria-label="Putar">▶</button>
+          <input type="range" class="penggeser" id="geser-jam" min="6" max="18" step="0.0833" value="7">
+        </div>
+        <p class="catatan mb0" id="info-jadwal" style="margin-top:6px"></p>
+      </div>
+
+      <div id="detail" class="detail-mesin sembunyi"></div>
+
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px">
+        <button class="tombol kecil garis" id="btn-ikhtisar">Tampilan penuh</button>
+        <button class="tombol kecil garis" id="btn-label">Label: aktif</button>
+        <button class="tombol kecil garis" id="btn-semua">Matikan semua</button>
+      </div>
+      <ul class="daftar-saklar" id="saklar"></ul>
+      <p class="catatan" style="margin-top:12px">Seret untuk memutar, cubit/gulir untuk memperbesar, ketuk mesin untuk detail. Model 3D adalah ilustrasi; mesin tanpa foto dibuat dari bentuk umum mesin sejenis.</p>
+    </div>
+  </aside>
+</main>
+<script type="module" src="/assets/js/pages/simulasi-3d.js"></script>
+</body>
+</html>
